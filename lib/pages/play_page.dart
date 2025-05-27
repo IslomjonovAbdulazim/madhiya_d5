@@ -76,6 +76,26 @@ class _PlayPageState extends State<PlayPage> {
                       );
                     }),
 
+                // timing
+                Row(
+                  children: [
+                    StreamBuilder<Duration>(
+                      stream: player.positionStream,
+                      builder: (context, snapshot) {
+                        final pos = snapshot.data ?? Duration.zero;
+                        return Text(format(pos));
+                      }
+                    ),
+                    Spacer(),
+                    StreamBuilder<Duration?>(
+                        stream: player.durationStream,
+                        builder: (context, snapshot) {
+                          final pos = snapshot.data ?? Duration.zero;
+                          return Text(format(pos));
+                        }
+                    ),
+                  ],
+                ),
                 // controller
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:madhiya_d5/main.dart';
+import 'package:madhiya_d5/pages/play_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,7 +29,9 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(vertical: 4),
               child: CupertinoButton(
                 color: Colors.yellow,
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(PlayPage(song: model));
+                },
                 child: Text(
                   model.title,
                   textAlign: TextAlign.center,

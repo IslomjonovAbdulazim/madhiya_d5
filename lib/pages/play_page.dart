@@ -17,11 +17,18 @@ class _PlayPageState extends State<PlayPage> {
 
   @override
   void initState() {
+    setUp();
     super.initState();
   }
 
   void setUp() async {
     await player.setAsset(widget.song.asset);
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
   }
 
   @override

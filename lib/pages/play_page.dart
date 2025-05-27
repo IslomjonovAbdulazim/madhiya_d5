@@ -80,6 +80,18 @@ class _PlayPageState extends State<PlayPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    CupertinoButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        final sec = player.position.inSeconds - 10;
+                        if (sec > 0) {
+                          player.seek(Duration(seconds: sec));
+                        } else {
+                          player.seek(Duration.zero);
+                        }
+                      },
+                      child: Icon(Icons.replay_10, size: 35),
+                    ),
                     StreamBuilder<bool>(
                         stream: player.playingStream,
                         builder: (context, snapshot) {
@@ -100,6 +112,18 @@ class _PlayPageState extends State<PlayPage> {
                             ),
                           );
                         }),
+                    CupertinoButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        final sec = player.position.inSeconds + 10;
+                        if (sec < (player.duration?.inSeconds ?? 0)) {
+                          player.seek(Duration(seconds: sec));
+                        } else {
+                          player.seek(player.duration);
+                        }
+                      },
+                      child: Icon(Icons.forward_10, size: 35),
+                    ),
                   ],
                 ),
               ],

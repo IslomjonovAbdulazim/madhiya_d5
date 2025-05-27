@@ -6,6 +6,7 @@ import 'package:madhiya_d5/pages/home_page.dart';
 void main() {
   runApp(
     DevicePreview(
+      enabled: false,
       builder: (context) => MyApp(),
     ),
   );

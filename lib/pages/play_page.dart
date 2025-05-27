@@ -26,7 +26,11 @@ class _PlayPageState extends State<PlayPage> {
     await player.setAsset(widget.song.asset);
   }
 
-
+  String format(Duration duration) {
+    final min = duration.inMinutes;
+    final sec = duration.inSeconds % 60;
+    return "$min:${sec.toString().padLeft(2, "0")}";
+  }
 
   @override
   void dispose() {

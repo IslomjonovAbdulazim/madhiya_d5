@@ -4,6 +4,7 @@ import 'package:madhiya_d5/main.dart';
 
 class PlayPage extends StatefulWidget {
   final SongModel song;
+
   const PlayPage({super.key, required this.song});
 
   @override
@@ -12,6 +13,16 @@ class PlayPage extends StatefulWidget {
 
 class _PlayPageState extends State<PlayPage> {
   final player = AudioPlayer();
+  var duration = Duration.zero;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void setUp() async {
+    await player.setAsset(widget.song.asset);
+  }
 
   @override
   Widget build(BuildContext context) {
